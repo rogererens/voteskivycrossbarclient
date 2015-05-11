@@ -6,11 +6,39 @@ from kivy.app import App
 from kivy.factory import Factory
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
-
+from kivy.lang import Builder
 from autobahn.twisted.wamp import ApplicationSession
 from autobahn.twisted.wamp import ApplicationRunner
-
 from twisted.internet.defer import inlineCallbacks
+
+Builder.load_string('''
+<MilkshakeRoot>:
+    milkshakes: box_with_milkshakes
+    orientation: 'vertical'
+    BoxLayout:
+        id: box_with_milkshakes
+        orientation: 'horizontal'
+    Button:
+        size_hint_y: 0.1
+        text: 'Reset'
+        on_press: app.root.send_reset()
+
+<MilkshakeWidget@BoxLayout>
+    orientation: 'vertical'
+    name: ''
+    amount: 0
+    Button:
+        background_normal: root.name + '_small.png'
+        on_press: app.root.send_vote(root.name)
+    Label:
+        size_hint_y: 0.2
+        text: root.name
+    Label:
+        id: root.name
+        size_hint_y: 0.4
+        font_size: '40sp'
+        text: str(root.amount)
+''')
 
 
 class WampComponent(ApplicationSession):
@@ -62,13 +90,13 @@ class MilkshakeRoot(BoxLayout):
 
     def on_vote_message(self, msg):
         """
-        Called from WampComponent when message was received in a PubSub event.
+        Called from WampComponent when Crossbar router published vote event.
         """
         self.milkshake_dict[msg[u'subject']].amount = msg[u'votes']
 
     def on_reset_message(self):
         """
-        Called from WampComponent when message was received in a PubSub event.
+        Called from WampComponent when Crossbar router published reset event.
         """
         for milkshake in self.milkshakes.children:
             milkshake.amount = 0

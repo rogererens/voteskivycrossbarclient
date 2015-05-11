@@ -52,11 +52,11 @@ class MilkshakeRoot(BoxLayout):
         for vote in votes:
             self.milkshake_dict[vote[u'subject']].amount = vote[u'votes']
 
-    def send_vote(self, subject, *args):
+    def send_vote(self, subject):
         if self.session:
             self.session.call(u'io.crossbar.demo.vote.vote', subject)
 
-    def send_reset(self, *args):
+    def send_reset(self):
         if self.session:
             self.session.call(u'io.crossbar.demo.vote.reset')
 

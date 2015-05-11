@@ -116,7 +116,8 @@ class MilkshakeManiaApp(App):
 
         # run our WAMP application component
         # runner = ApplicationRunner(url=u"wss://demo.crossbar.io/ws",
-        #  realm=u"crossbardemo", extra=dict(ui=self.root))
+        #                            realm=u"crossbardemo",
+        #                            extra=dict(ui=self.root))
         runner = ApplicationRunner(url=u'ws://127.0.0.1:8080/ws',
                                    realm=u'realm1',
                                    extra=dict(ui=self.root))

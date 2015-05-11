@@ -1,0 +1,26 @@
+<MilkshakeRoot>:
+    milkshakes: box_with_milkshakes
+    orientation: 'vertical'
+    BoxLayout:
+        id: box_with_milkshakes
+        orientation: 'horizontal'
+    Button:
+        size_hint_y: 0.1
+        text: 'Reset'
+        on_press: app.root.reset_numbers()
+
+<MilkshakeWidget>
+    orientation: 'vertical'
+    name: ''
+    number_ordered: 0
+    Button:
+        background_normal: root.name + '_small.png'
+        on_press: root.increase_number()
+    Label:
+        size_hint_y: 0.2
+        text: root.name
+    Label:
+        id: root.name
+        size_hint_y: 0.4
+        font_size: '40sp'
+        text: str(root.number_ordered)

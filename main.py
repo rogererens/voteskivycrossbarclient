@@ -1,11 +1,11 @@
+# Kivy's install_twisted_rector MUST be called early on!
+from kivy.support import install_twisted_reactor
+install_twisted_reactor()
+
 from kivy.app import App
 from kivy.factory import Factory
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
-
-# Kivy's install_twisted_rector MUST be called early on!
-from kivy.support import install_twisted_reactor
-install_twisted_reactor()
 
 from autobahn.twisted.wamp import ApplicationSession
 from autobahn.twisted.wamp import ApplicationRunner
@@ -72,9 +72,6 @@ class MilkshakeRoot(BoxLayout):
         """
         for milkshake in self.milkshakes.children:
             milkshake.amount = 0
-
-class MilkshakeWidget(BoxLayout):
-    pass
 
 
 class MilkshakeManiaApp(App):

@@ -7,15 +7,15 @@
     Button:
         size_hint_y: 0.1
         text: 'Reset'
-        on_press: app.root.reset_numbers()
+        on_press: app.root.send_reset()
 
 <MilkshakeWidget>
     orientation: 'vertical'
     name: ''
-    number_ordered: 0
+    amount: 0
     Button:
         background_normal: root.name + '_small.png'
-        on_press: root.increase_number()
+        on_press: app.root.send_vote(root.name)
     Label:
         size_hint_y: 0.2
         text: root.name
@@ -23,4 +23,4 @@
         id: root.name
         size_hint_y: 0.4
         font_size: '40sp'
-        text: str(root.number_ordered)
+        text: str(root.amount)

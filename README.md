@@ -65,7 +65,8 @@ where python is the python interpreter used by Kivy.
 
 This will start a Kivy based UI which incorporates a Votes front-end component.
 
-You now can send message between the browser and Kivy UI:
+You now can send message between the browser and Kivy UI 
+(click the images/buttons to increase or reset the numbers):
 
 ![screenshot1.png](screenshot1.png)
 

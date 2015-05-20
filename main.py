@@ -141,7 +141,6 @@ class VotesApp(App):
         if v < '0.10.2':
             url, realm = u"wss://demo.crossbar.io/ws", u"crossbardemo"
         else:
-            # url, realm = u"ws://ws.wolkware.com:19743/ws", u"realm1"
             url, realm = u"ws://localhost:8080/ws", u"realm1"
 
         # Create our WAMP application component

@@ -68,20 +68,24 @@ Clone the repository containing this example:
 
 Go to the folder that contains this README.md file. If you are using a Mac
 
-    kivy -m pip install -r requirements.txt
+    kivy -m pip install -r requirements-tavendo.txt
     kivy main.py
 
 
 other platforms should use
 
 
-    python -m pip install -r requirements.txt
+    python -m pip install -r requirements-tavendo.txt
     python main.py
 
 
 where python is the python interpreter used by Kivy.
 
 This will start a Kivy based UI which incorporates a Votes front-end component.
+It connects to the router and back-end on the Tavendo server.
+
+**If you would like to connect to your localhost based router and back-end, you have to discard the `-tavendo` part
+in the above command.**
 
 You now can send messages between the browser front-end and the Kivy front-end
 (in the latter, click the images to increase or reset the numbers):
